@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "f5566282-1448-4c82-a5be-3b8108ca949c",
+		"name": "BayesDotaChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "match",
+			"item": [
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57e9dfc9-98ae-40c6-99f8-5fc02320bea0",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/home/exp2radislav/Projects/BayesDotaChallenge/data/combatlog_1.txt"
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b4881c4-3f62-402c-8084-e60d955634bc",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/home/exp2radislav/Projects/BayesDotaChallenge/data/combatlog_2.txt"
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7699bc09-f9fc-4bd7-95fa-995c3659e142",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"hero\"] = responseBody.has(\"hero\");",
+									"tests[\"kills\"] = responseBody.has(\"kills\");",
+									"",
+									"tests[\"hero1\"] =  jsonData[0].hero == \"snapfire\";",
+									"tests[\"kills1\"] = jsonData[0].kills == 7;",
+									"tests[\"hero2\"] =  jsonData[1].hero == \"rubick\";",
+									"tests[\"kills2\"] = jsonData[1].kills == 10;",
+									"tests[\"hero2\"] =  jsonData[2].hero == \"pangolier\";",
+									"tests[\"kills2\"] = jsonData[2].kills == 10;",
+									"tests[\"hero3\"] =  jsonData[3].hero == \"bane\";",
+									"tests[\"kills3\"] = jsonData[3].kills == 6;",
+									"tests[\"hero4\"] =  jsonData[4].hero == \"abyssal_underlord\";",
+									"tests[\"kills4\"] = jsonData[4].kills == 6;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match",
+								"{{match_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "433a0639-f49d-4f8d-9e87-a7e4e440df80",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"item\"] = responseBody.has(\"item\");",
+									"tests[\"timestamp\"] = responseBody.has(\"timestamp\");",
+									"",
+									"tests[\"item1\"] =  jsonData[0].item == \"item_magic_stick\";",
+									"tests[\"timestamp1\"] = jsonData[0].timestamp == 684554;",
+									"tests[\"item2\"] =  jsonData[1].item == \"item_recipe_magic_wand\";",
+									"tests[\"timestamp2\"] = jsonData[1].timestamp == 684721;",
+									"tests[\"item3\"] =  jsonData[2].item == \"item_magic_wand\";",
+									"tests[\"timestamp3\"] = jsonData[2].timestamp == 720645;",
+									"tests[\"item4\"] =  jsonData[3].item == \"item_boots\";",
+									"tests[\"timestamp4\"] = jsonData[3].timestamp == 900168;",
+									"tests[\"item5\"] =  jsonData[4].item == \"item_sobi_mask\";",
+									"tests[\"timestamp5\"] = jsonData[4].timestamp == 998311;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/items",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match",
+								"{{match_id}}",
+								"{{hero_name}}",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/spells",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d90fbda-75c4-4bb2-ad53-1829e5f3cc94",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"spell\"] = responseBody.has(\"spell\");",
+									"tests[\"casts\"] = responseBody.has(\"casts\");",
+									"",
+									"tests[\"spell1\"] =  jsonData[0].spell == \"pangolier_swashbuckle\";",
+									"tests[\"casts1\"] = jsonData[0].casts == 34;",
+									"tests[\"spell2\"] =  jsonData[1].spell == \"pangolier_shield_crash\";",
+									"tests[\"casts2\"] = jsonData[1].casts == 26;",
+									"tests[\"spell3\"] =  jsonData[2].spell == \"pangolier_gyroshell\";",
+									"tests[\"casts3\"] = jsonData[2].casts == 7;",
+									"tests[\"spell4\"] =  jsonData[3].spell == \"pangolier_gyroshell_stop\";",
+									"tests[\"casts4\"] = jsonData[3].casts == 1;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/spells",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match",
+								"{{match_id}}",
+								"{{hero_name}}",
+								"spells"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/damage",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fad3425b-1f00-4b26-8e22-b3d586d313f4",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"target\"] = responseBody.has(\"target\");",
+									"tests[\"damage_instances\"] = responseBody.has(\"damage_instances\");",
+									"tests[\"total_damage\"] = responseBody.has(\"total_damage\");",
+									"",
+									"tests[\"target1\"] =  jsonData[0].target == \"rubick\";",
+									"tests[\"damage_instances1\"] = jsonData[0].damage_instances == 98;",
+									"tests[\"total_damage1\"] = jsonData[0].total_damage == 4951;",
+									"tests[\"target2\"] =  jsonData[1].target == \"bane\";",
+									"tests[\"damage_instances2\"] = jsonData[1].damage_instances == 31;",
+									"tests[\"total_damage2\"] = jsonData[1].total_damage == 2269;",
+									"tests[\"target3\"] =  jsonData[2].target == \"death_prophet\";",
+									"tests[\"damage_instances3\"] = jsonData[2].damage_instances == 26;",
+									"tests[\"total_damage3\"] = jsonData[2].total_damage == 2374;",
+									"tests[\"target4\"] =  jsonData[3].target == \"mars\";",
+									"tests[\"damage_instances4\"] = jsonData[3].damage_instances == 14;",
+									"tests[\"total_damage4\"] = jsonData[3].total_damage == 1464;",
+									"tests[\"target5\"] =  jsonData[4].target == \"bloodseeker\";",
+									"tests[\"damage_instances5\"] = jsonData[4].damage_instances == 18;",
+									"tests[\"total_damage5\"] = jsonData[4].total_damage == 2063;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{domain}}:{{port}}/api/match/{{match_id}}/{{hero_name}}/damage",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"match",
+								"{{match_id}}",
+								"{{hero_name}}",
+								"damage"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
